@@ -6,13 +6,14 @@ import GLightbox from 'glightbox';
 import '../../../node_modules/glightbox/dist/css/glightbox.min.css';
 
 interface Props {
-    
+  introText: string;
+  video: string;
 }
 
-function Intro({}: Props): ReactElement {
+function Intro({introText, video}: Props): ReactElement {
     useEffect(() => {
         const lightbox = GLightbox({
-            'href': 'https://www.youtube.com/watch?v=f02mOEt11OQ',
+            'href': video,
             'type': 'video',
             'source': 'youtube', //vimeo, youtube or local
             'width': 900,
@@ -27,10 +28,9 @@ function Intro({}: Props): ReactElement {
         <div className="row">
           <div className="col-md-6 intro">
             <h1 className="display-2">
-              <span className="display-2--intro">Hey!, I'm Gokulkumar </span>
+              <span className="display-2--intro">Hey!, {introText.slice(0, 9)} </span>
               <span className="display-2--description lh-base">
-                this is my first portfolio in resposive layout with sass and
-                bootstrap
+              {introText.slice(9)}
               </span>
             </h1>
             <Button text="Get in touch" icon={<i className="fas fa-arrow-right" />}/>

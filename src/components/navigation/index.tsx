@@ -2,9 +2,13 @@ import React, { ReactElement } from "react";
 import Button from "../customButton";
 import './style.scss';
 
-interface Props {}
+interface Props {
+  logo: string;
+  contactNo: number;
+  navigation: string[];
+}
 
-function Nav({}: Props): ReactElement {
+function Nav({logo, navigation,  contactNo, }: Props): ReactElement {
   const options = [
     "Home",
     "Services",
@@ -13,12 +17,12 @@ function Nav({}: Props): ReactElement {
     "Portfolio",
     "Contacts",
   ];
-
+console.log(navigation)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark menu shadow fixed-top">
       <div className="container">
         <a className="navbar-brand" href="#">
-          <img src="images/logo.png" alt="logo_image" />
+          <img src={logo} alt="logo_image" />
         </a>
         <button
           className="navbar-toggler"
@@ -36,9 +40,9 @@ function Nav({}: Props): ReactElement {
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <NavSideOptions options={options} />
+            <NavSideOptions options={navigation} />
           </ul>
-          <Button text="+91 9047343744" icon={<i className="fas fa-phone" />}/>
+          <Button text={'+91'+contactNo} icon={<i className="fas fa-phone" />}/>
         </div>
       </div>
     </nav>
