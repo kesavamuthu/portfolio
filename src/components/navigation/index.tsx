@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import Button from "../customButton";
-import './style.scss';
+import "./style.scss";
 
 interface Props {
   logo: string;
@@ -8,7 +8,7 @@ interface Props {
   navigation: string[];
 }
 
-function Nav({logo, navigation,  contactNo, }: Props): ReactElement {
+function Nav({ logo, navigation, contactNo }: Props): ReactElement {
   const options = [
     "Home",
     "Services",
@@ -17,7 +17,7 @@ function Nav({logo, navigation,  contactNo, }: Props): ReactElement {
     "Portfolio",
     "Contacts",
   ];
-console.log(navigation)
+  console.log(navigation);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark menu shadow fixed-top">
       <div className="container">
@@ -42,7 +42,10 @@ console.log(navigation)
           <ul className="navbar-nav mb-2 mb-lg-0">
             <NavSideOptions options={navigation} />
           </ul>
-          <Button text={'+91'+contactNo} icon={<i className="fas fa-phone" />}/>
+          <Button
+            text={"+91" + contactNo}
+            icon={<i className="fas fa-phone" />}
+          />
         </div>
       </div>
     </nav>
