@@ -1,7 +1,7 @@
 # Portfolio
 
 ###### Following packages are installed
-*1.sass
+ Markup : *1.sass
 2.glightbox -- for resposive video and image
 3.bootstrap -- for resposive design
 4.typescript
