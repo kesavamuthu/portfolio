@@ -14,5 +14,7 @@ Markup : 1. sass
               2. Which is numbered
           2. Which is numbered
           
-1.  foo
+<ol start="0">
+<li>ok</li>
+</ol>
 Page break-down to separate component for resusability
