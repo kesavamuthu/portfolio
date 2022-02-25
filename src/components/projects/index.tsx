@@ -58,7 +58,7 @@ export default function Projects({
 
 function Project({ name, avatar_url, html_url, ref }: any): ReactElement {
   return (
-    <div className="p-5 mb-4 bg-light rounded-3" ref={ref}>
+    <div className="p-5 mb-4 bg-light rounded-3 project each-section" ref={ref}>
       <div className="container-fluid py-5">
         <h1 className="display-5 fw-bold">{name}</h1>
         <p className="col-md-8 fs-4">{html_url}</p>

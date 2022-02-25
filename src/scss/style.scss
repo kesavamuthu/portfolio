@@ -1,20 +1,19 @@
-@use 'custom';
+@use "custom";
 
-// import the components 
+// import the components
 
-@use 'components/animations';
-@use 'components/buttons';
-@use 'components/mixins';
-@use 'components/typography';
+@use "components/animations";
+@use "components/buttons";
+@use "components/mixins";
+@use "components/typography";
 
-// import the section 
-@use 'sections/navbar';
-@use 'sections/intro-section';
-@use 'sections/companies';
-@use 'sections/faq';
-@use 'sections/services';
-@use 'sections/testimonials';
-@use 'sections/portfolio';
-@use 'sections/get-started';
-@use 'sections/footer';
-
+// import the section
+@use "sections/navbar";
+@use "sections/intro-section";
+@use "sections/companies";
+@use "sections/faq";
+@use "sections/services";
+@use "sections/testimonials";
+@use "sections/portfolio";
+@use "sections/get-started";
+@use "sections/footer";

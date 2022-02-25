@@ -8,9 +8,10 @@ import "../../../node_modules/glightbox/dist/css/glightbox.min.css";
 interface Props {
   introText: string[];
   video: string;
+  email?: string;
 }
 
-function Intro({ introText, video }: Props): ReactElement {
+function Intro({ introText, email, video }: Props): ReactElement {
   useEffect(() => {
     const lightbox = GLightbox({
       href: video,
@@ -22,7 +23,7 @@ function Intro({ introText, video }: Props): ReactElement {
   }, []);
 
   return (
-    <section id="home" className="intro-section">
+    <section id="home" className="intro-section each-section">
       <div className="container">
         <div className="row">
           <div className="col-md-6 intro">
@@ -37,6 +38,9 @@ function Intro({ introText, video }: Props): ReactElement {
             <Button
               text="Get in touch"
               icon={<i className="fas fa-arrow-right" />}
+              onClick={() =>
+                (window.location.href = `mailto:${email}?subject=problem-to-solve&body=Define%20your%20awesome%20problem%20here`)
+              }
             />
           </div>
           <div className="col-md-6 intro text-end">
