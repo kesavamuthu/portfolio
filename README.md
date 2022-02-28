@@ -1,4 +1,5 @@
 # Portfolio
+[<u>Portfolio Landing page</u>](https://kind-archimedes-5f2204.netlify.app/gokul2908)
 
 ###### Following packages helped a lot to make this portfolio
 
@@ -9,16 +10,18 @@
 <img src="https://pbs.twimg.com/profile_images/1491038861224517637/s-H1KgWO_400x400.png" width="200" height="200" alt="Font-awesome"/>
          </div>
 <ol style="text-transform: capitalize;">
-<li>sass</li>
-<li>glightbox -- for resposive video and image</li>
-<li>bootstrap -- for resposive design</li>
+<li>Sass</li>
+<li>Glightbox -- for resposive video and image</li>
+<li>Bootstrap -- for resposive design</li>
 
-<li>typescript</li>
+<li>Typescript</li>
 
 <li>Autoprefixer css - to add vendor denoted css properties</li>
 <li>Axios -- fetch data helper</li>
 
 <li>Font-awesome</li>
 </ol>
-
+<br>
 Page break-down to separate component for resusability
+<br>
+User can be added under `kesavamuthu.github.io/src/user_details.ts` 
