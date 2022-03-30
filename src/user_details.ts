@@ -5,7 +5,7 @@ const user = [
     contactNo: 9047234234,
     introText: [
       "I am Gokul",
-      "This is my first portfolio using React, Javascript, SCSS and Bootstrap with responsive layout",
+      "Portfolio using React, Typescript, SCSS and Bootstrap with responsive layout",
     ],
     video: "https://www.youtube.com/watch?v=f02mOEt11OQ",
     navigation: ["Home", "Project", "FAQ", "Contact"],
