@@ -82,14 +82,16 @@ function Project({
             <div className="flip-card-inner">
               <div className="flip-card-front">
                 <img
-                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                  src="/images/GitHub-Mark-120px-plus.png"
                   alt="Avatar"
-                  style={{ width: "200px", height: "200px" }}
+                  style={{ backgroundColor: "white" }}
                 />
               </div>
               <div className="flip-card-back">
-                <h1>Github</h1>
-                <p>Click to open project</p>
+                <img
+                  src="/images/GitHub-Mark-Light-120px-plus.png"
+                  style={{ backgroundColor: "black" }}
+                />
               </div>
             </div>
           </div>
