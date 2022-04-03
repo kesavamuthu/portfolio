@@ -7,6 +7,7 @@ type usersDetailsType = {
   navigation: string[];
   projects: string[][];
   email?: string;
+  projectInfo?: {};
 };
 
 export interface Repos {
