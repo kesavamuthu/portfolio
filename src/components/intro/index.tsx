@@ -23,7 +23,7 @@ function Intro({ introText, email, video }: Props): ReactElement {
   }, []);
 
   return (
-    <section id="home" className="intro-section each-section">
+    <section id="Home" className="intro-section each-section">
       <div className="container">
         <div className="row">
           <div className="col-md-6 intro">
@@ -51,7 +51,7 @@ function Intro({ introText, email, video }: Props): ReactElement {
                 className="img-fluid"
               />
               <a
-                href="#"
+                href="#navbarSupportedContent"
                 className="glightbox position-absolute top-50 start-50 translate-middle"
               >
                 <span>
