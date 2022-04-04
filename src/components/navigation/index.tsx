@@ -64,7 +64,7 @@ function NavSideOptions({
       {options.map((option, i) => {
         return (
           <li className="nav-item" key={i}>
-            <a className="nav-link" href="#">
+            <a className="nav-link" href={"#" + option}>
               {option}
             </a>
           </li>
