@@ -12,6 +12,7 @@
 .intro {
   .video-box {
     position: relative;
+    height: 100%;
     a {
       span {
         i {
@@ -21,6 +22,18 @@
       }
     }
   }
+}
+
+.text-end {
+  min-height: 50vh;
+}
+
+.img-fluid {
+  position: absolute;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #intro-title {
