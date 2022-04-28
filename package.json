@@ -8,7 +8,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "autoprefixer": "^10.3.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^5.1.0",
     "glightbox": "^3.0.9",
     "react": "^17.0.2",
