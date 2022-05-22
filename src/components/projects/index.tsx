@@ -62,11 +62,11 @@ function Project({
 }: any): ReactElement {
   console.log(projectInfo);
   return (
-    <div className="project each-section" ref={ref}>
+    <div className="project each-section" id={name} ref={ref}>
       <div className="container">
         <div className="row">
           <div className="display-2--intro" id="intro-title">
-            <h1>{name}</h1>
+            <a href={"#"+name}><h1>{name}</h1></a>
           </div>
         </div>
         <div className="row">
