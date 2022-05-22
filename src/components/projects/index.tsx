@@ -66,7 +66,7 @@ function Project({
       <div className="container">
         <div className="row">
           <div className="display-2--intro" id="intro-title">
-            {name}
+            <h1>{name}</h1>
           </div>
         </div>
         <div className="row">
@@ -74,6 +74,7 @@ function Project({
             ? projectInfo[name]
             : "No description"}
         </div>
+        {/* github icon */}
         <div className="row icon">
           <div
             className="flip-card"

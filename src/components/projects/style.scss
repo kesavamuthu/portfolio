@@ -1,1 +1,21 @@
 @import "/src//scss/sections/projects";
+
+
+#intro-title > h1{
+    border-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
+}
+
+.project{
+    margin: 2vw;
+    border-radius: 80px;
+}
+
+.project:nth-child(odd){
+    background-color: bisque;
+}
+
+.project:nth-child(even){
+    background-color: aquamarine;
+}
