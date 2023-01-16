@@ -4,20 +4,20 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import Homepage from "./pages/homepage";
 import {
   BrowserRouter as Router,
-  Switch,
+  Navigate,
   Route,
-  Redirect,
+  Routes,
 } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-      <Route exact path="/">
-        <Redirect from="/" to="/kesavamuthu" />
-      </Route>
-      <Route path="/:name">
-        <Homepage />
-      </Route>
+      <Routes>
+      <Route  path="/" element={<Navigate replace to="/kesavamuthu" />}/>
+      <Route path="/:name" element={<Homepage />}>
+        
+        </Route>
+        </Routes>
     </Router>
   );
 }
