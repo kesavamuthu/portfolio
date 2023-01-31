@@ -24,4 +24,4 @@
 <br>
 Page break-down to separate component for resusability
 <br>
-User can be added under `.src/user_details.ts` 
+User can be added under `kesavamuthu.github.io/src/user_details.ts` 
