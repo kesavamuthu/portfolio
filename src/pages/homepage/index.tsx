@@ -7,13 +7,14 @@ import user from "../../user_details";
 import usersDetailsType from "./userModel";
 import "./homepage.scss";
 
-interface Props {}
 
-function Homepage({}: Props): ReactElement {
+
+function Homepage(): ReactElement {
   const { name } = useParams() as { name: string };
-  const userDetails = user.find(
+  let userDetails = user.find(
     (e) => e.name?.toLowerCase() === name
   ) as usersDetailsType; //not working
+  if (!userDetails) userDetails  = user[0]
   return (
     <div>
       <Nav {...userDetails} />
