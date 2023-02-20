@@ -7,16 +7,14 @@ import user from "../../user_details";
 import usersDetailsType from "./userModel";
 import "./homepage.scss";
 
-
-
 function Homepage(): ReactElement {
   const { name } = useParams() as { name: string };
   let userDetails = user.find(
     (e) => e.name?.toLowerCase() === name
   ) as usersDetailsType; //not working
-  if (!userDetails) userDetails  = user[0]
+  if (!userDetails) userDetails = user[0];
   return (
-    <div>
+    <>
       <Nav {...userDetails} />
       <div className="y-mandatory">
         <div className="wrapper">
@@ -25,7 +23,7 @@ function Homepage(): ReactElement {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

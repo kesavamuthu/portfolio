@@ -19,34 +19,32 @@ function Nav({ logo, navigation, contactNo }: Props): ReactElement {
   ];
   console.log(navigation);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark menu shadow fixed-top">
-      <div className="container">
-        <a className="navbar-brand" href="#">
-          <img src={logo} alt="logo_image" />
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarSupportedContent"
-        >
-          <ul className="navbar-nav mb-2 mb-lg-0">
-            <NavSideOptions options={navigation} />
-          </ul>
-          <Button
-            text={"+91" + contactNo}
-            icon={<i className="fas fa-phone" />}
-          />
-        </div>
+    <nav className="navbar navbar-expand-lg navbar-dark menu shadow fixed-top px-3">
+      <a className="navbar-brand" href="#">
+        <img src={logo} alt="logo_image" />
+      </a>
+      <button
+        className="navbar-toggler bg-primary bg-opacity-75"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div
+        className="collapse navbar-collapse justify-content-end"
+        id="navbarSupportedContent"
+      >
+        <ul className="navbar-nav mb-2 mb-lg-0">
+          <NavSideOptions options={navigation} />
+        </ul>
+        <Button
+          text={"+91" + contactNo}
+          icon={<i className="fas fa-phone" />}
+        />
       </div>
     </nav>
   );
