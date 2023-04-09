@@ -1,7 +1,7 @@
 type usersDetailsType = {
   name: string;
   logo: string;
-  contactNo: number;
+  contactNo?: number;
   introText: string[];
   video: string;
   navigation: string[];

@@ -25,7 +25,6 @@ const user = [
   {
     name: "kesavamuthu",
     logo: "./images/kesav_logo.jpg",
-    contactNo: 8072386812,
     introText: [
       " ",
       "My name is kesav. I've 5 years of experience in software development...",

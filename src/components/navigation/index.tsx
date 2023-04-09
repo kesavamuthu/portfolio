@@ -4,7 +4,7 @@ import "./style.scss";
 
 interface Props {
   logo: string;
-  contactNo: number;
+  contactNo?: number;
   navigation: string[];
 }
 
@@ -41,10 +41,10 @@ function Nav({ logo, navigation, contactNo }: Props): ReactElement {
         <ul className="navbar-nav mb-2 mb-lg-0">
           <NavSideOptions options={navigation} />
         </ul>
-        <Button
+        {!!contactNo && <Button
           text={"+91" + contactNo}
           icon={<i className="fas fa-phone" />}
-        />
+        />}
       </div>
     </nav>
   );
