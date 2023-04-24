@@ -14,7 +14,7 @@ function Homepage(): ReactElement {
   ) as usersDetailsType; //not working
   if (!userDetails) userDetails = user[0];
   return (
-    <>
+    <>  
       <Nav {...userDetails} />
       <div className="y-mandatory">
         <div className="wrapper">
