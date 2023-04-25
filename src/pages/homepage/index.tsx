@@ -11,15 +11,15 @@ function Homepage(): ReactElement {
   const { name } = useParams() as { name: string };
   let userDetails = user.find(
     (e) => e.name?.toLowerCase() === name
-  ) as usersDetailsType; //not working
+  ); //not working
   if (!userDetails) userDetails = user[0];
   return (
     <>  
       <Nav {...userDetails} />
       <div className="y-mandatory">
         <div className="wrapper">
-          {[Intro, Projects].map((E) => (
-            <E {...userDetails} />
+          {[Intro, Projects].map((Component) => (
+            <Component {...userDetails} />
           ))}
         </div>
       </div>

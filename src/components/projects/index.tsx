@@ -15,7 +15,8 @@ interface Props {
     name?: string;
     projects?: string[][];
     filteredProjects?: string[];
-    projectInfo?: {};
+    projectInfo:[{}];
+    openSourceProjectsInfo: {[type: string]: any};
 }
 
 export default function Projects({
@@ -23,8 +24,9 @@ export default function Projects({
     projects,
     filteredProjects,
     projectInfo,
+    openSourceProjectsInfo
 }: Props): ReactElement {
-    const [repos, setRepos] = useState<Repos[] | string[][]>();
+    const [gitRepos, setGitRepos] = useState<Repos[] | string[][]>();
     const ref = useRef(null);
     console.log('projectInfo:', projectInfo);
 
@@ -34,11 +36,11 @@ export default function Projects({
                 const { data } = await axios.get(
                     `https://api.github.com/users/${profileName}/repos`
                 );
-                setRepos(
+                setGitRepos(
                     profileName
                         ? (data as Repos[]).filter(
-                              ({ name }) => !filteredProjects?.includes(name)
-                          )
+                            ({ name }) => !filteredProjects?.includes(name)
+                        )
                         : projects
                 );
             } catch (error: any) {
@@ -55,7 +57,8 @@ export default function Projects({
                 columns={12}
                 justifyContent='space-evenly'
             >
-                {(repos as Repos[])?.map(
+                {projectInfo.map((info, i) => <Project key={i} {...info}/>)}
+                {(gitRepos as Repos[])?.map(
                     ({ id, name, owner: { avatar_url, html_url } }, idx) => (
                         <Project
                             {...{
@@ -64,7 +67,7 @@ export default function Projects({
                                 avatar_url,
                                 html_url,
                                 ref,
-                                projectInfo,
+                                description: openSourceProjectsInfo[name],
                                 idx,
                             }}
                         />
@@ -77,13 +80,14 @@ export default function Projects({
 
 function Project({
     name,
+    description,
     avatar_url,
     html_url,
     ref,
-    projectInfo,
+    openSourceProjectsInfo,
     idx,
 }: any): ReactElement {
-    console.log(projectInfo);
+    console.log(openSourceProjectsInfo);
     const [springs, api] = useSpring(() => ({
         from: { x: -1200 },
     }));
@@ -97,8 +101,8 @@ function Project({
             return (
                 rect.top >= 0 &&
                 rect.bottom - 5 <=
-                    (window.innerHeight ||
-                        document.documentElement.clientHeight)
+                (window.innerHeight ||
+                    document.documentElement.clientHeight)
             );
         };
         const handleScroll = () => {
@@ -157,21 +161,19 @@ function Project({
                             {name}
                         </Typography>
                         <Typography variant='body2' color='text.secondary'>
-                            {projectInfo?.hasOwnProperty(name)
-                                ? projectInfo[name]
-                                : 'No description'}
+                            {description || 'No description'}
                         </Typography>
                     </CardContent>
                     <CardActions>
                         <Button size='small'>Share</Button>
-                        <Button
+                        {!!html_url && <Button
                             size='small'
                             onClick={() =>
                                 window.open(html_url + '/' + name, '_blank')
                             }
                         >
                             Learn More
-                        </Button>
+                        </Button>}
                     </CardActions>
                 </Card>
             </Grid>
