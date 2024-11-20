@@ -19,6 +19,8 @@ interface Props {
   openSourceProjectsInfo: { [type: string]: any };
 }
 
+const showPercentageInView = 0.01;
+
 export default function Projects({
   name: profileName,
   projects,
@@ -110,6 +112,7 @@ function Project({ name, description, html_url, idx }: any): ReactElement {
         style={{ border: "none" }}
       >
         <Grid item xs={12} sm={6} key={idx}>
+
           <Card sx={{ minWidth: 345 }} className=" my-3">
             <CardMedia
               sx={{ height: 140 }}
