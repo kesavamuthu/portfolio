@@ -9,6 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Container, Grid } from "@mui/material";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
   name?: string;
@@ -57,6 +58,7 @@ export default function Projects({
         {(gitRepos as Repos[])?.map(
           ({ id, name, owner: { html_url } }, idx) => (
             <Project
+              key={id}
               {...{
                 id,
                 name,
@@ -71,36 +73,64 @@ export default function Projects({
     </Container>
   );
 }
+const cardVariants: Variants = {
+  offscreen: {
+    y: 100,
+    rotate: 270,
+  },
+  onscreen: {
+    y: 0,
+    rotate: 360,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
 
 function Project({ name, description, html_url, idx }: any): ReactElement {
   return (
-    <Grid item xs={12} sm={6} key={idx}>
-      <Card sx={{ minWidth: 345 }} className=" my-3">
-        <CardMedia
-          sx={{ height: 140 }}
-          image="https://www.uib.no/sites/w3.uib.no/files/styles/content_main/public/media/colourbox3117235_no5859_edit.jpg?itok=kPbJVL51"
-          title="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description || "No description"}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          {!!html_url && (
-            <Button
-              size="small"
-              onClick={() => window.open(html_url + "/" + name, "_blank")}
-            >
-              Learn More
-            </Button>
-          )}
-        </CardActions>
-      </Card>
-    </Grid>
+    <motion.div
+      className="card-container"
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.8 }}
+    >
+      <motion.div
+        className="card"
+        variants={cardVariants}
+        style={{ border: "none" }}
+      >
+        <Grid item xs={12} sm={6} key={idx}>
+          <Card sx={{ minWidth: 345 }} className=" my-3">
+            <CardMedia
+              sx={{ height: 140 }}
+              image="https://www.uib.no/sites/w3.uib.no/files/styles/content_main/public/media/colourbox3117235_no5859_edit.jpg?itok=kPbJVL51"
+              title="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {description || "No description"}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              {!!html_url && (
+                <Button
+                  size="small"
+                  onClick={() => window.open(html_url + "/" + name, "_blank")}
+                >
+                  Learn More
+                </Button>
+              )}
+            </CardActions>
+          </Card>
+        </Grid>
+      </motion.div>
+    </motion.div>
   );
 }

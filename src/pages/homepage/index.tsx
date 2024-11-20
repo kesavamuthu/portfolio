@@ -20,8 +20,8 @@ function Homepage(): ReactElement {
       <Nav {...userDetails} />
       <div className="y-mandatory">
         <div className="wrapper">
-          {[Intro, Projects].map((Component) => (
-            <Component {...userDetails} />
+          {[Intro, Projects].map((Component, i) => (
+            <Component {...userDetails} key={i} />
           ))}
         </div>
       </div>
