@@ -4,6 +4,7 @@ import "./style.scss";
 /* @ts-ignore */
 import GLightbox from "glightbox";
 import "../../../node_modules/glightbox/dist/css/glightbox.min.css";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
   introText: string[];
@@ -35,13 +36,26 @@ function Intro({ introText, email, video }: Props): ReactElement {
                 {introText[1]}
               </span>
             </h1>
-            <Button
-              text="Get in touch"
-              icon={<i className="fas fa-arrow-right" />}
-              onClick={() =>
-                (window.location.href = `mailto:${email}?subject=problem-to-solve&body=Define%20your%20awesome%20problem%20here`)
-              }
-            />
+
+            <motion.div
+              className="box"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 10,
+              }}
+              style={{ width: "fit-content" }}
+            >
+              <Button
+                text="Get in touch"
+                icon={<i className="fas fa-arrow-right" />}
+                onClick={() =>
+                  (window.location.href = `mailto:${email}?subject=problem-to-solve&body=Define%20your%20awesome%20problem%20here`)
+                }
+              />
+            </motion.div>
           </div>
           <div className="col-md-6 intro text-end">
             <div className="video-box">
@@ -53,6 +67,7 @@ function Intro({ introText, email, video }: Props): ReactElement {
               <a
                 href="#navbarSupportedContent"
                 className="glightbox position-absolute top-50 start-50 translate-middle"
+                id="hover-animation"
               >
                 <span>
                   <i className="fas fa-play-circle"></i>

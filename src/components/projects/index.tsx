@@ -75,10 +75,17 @@ export default function Projects({
 }
 const cardVariants: Variants = {
   offscreen: {
+    x: -1800,
     y: 100,
     rotate: 270,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 3,
+    },
   },
   onscreen: {
+    x: 0,
     y: 0,
     rotate: 360,
     transition: {
@@ -95,7 +102,7 @@ function Project({ name, description, html_url, idx }: any): ReactElement {
       className="card-container"
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
+      viewport={{ once: false, amount: 0.8 }}
     >
       <motion.div
         className="card"

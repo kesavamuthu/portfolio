@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import Button from "../customButton";
 import "./style.scss";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
   logo: string;
