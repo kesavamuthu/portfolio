@@ -9,8 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Container, Grid } from "@mui/material";
-import { animated, useSpring } from "@react-spring/web";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
   name?: string;
@@ -59,14 +58,13 @@ export default function Projects({
           <Project key={i} {...info} />
         ))}
         {(gitRepos as Repos[])?.map(
-          ({ id, name, owner: { avatar_url, html_url } }, idx) => (
+          ({ id, name, owner: { html_url } }, idx) => (
             <Project
+              key={id}
               {...{
                 id,
                 name,
-                avatar_url,
                 html_url,
-                ref,
                 description: openSourceProjectsInfo[name],
                 idx,
               }}
@@ -77,79 +75,44 @@ export default function Projects({
     </Container>
   );
 }
+const cardVariants: Variants = {
+  offscreen: {
+    x: -1800,
+    y: 100,
+    rotate: 270,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 3,
+    },
+  },
+  onscreen: {
+    x: 0,
+    y: 0,
+    rotate: 360,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
 
-function Project({
-  name,
-  description,
-  avatar_url,
-  html_url,
-  ref,
-  openSourceProjectsInfo,
-  idx,
-}: any): ReactElement {
-  console.log(openSourceProjectsInfo);
-  const divRef = useRef(null);
-  const animationDone = useRef({ l2r: false, r2l: false });
-
-  const { scrollYProgress } = useScroll({
-    target: divRef,
-    offset: ["end end", "start start"],
-  });
-
-  const [springs, api] = useSpring(() => ({
-    from: { x: -1200 },
-  }));
-
-  useEffect(() => {
-    const isElementInView = () => {
-      console.log(scrollYProgress, scrollYProgress.get(), divRef);
-
-      return Number(scrollYProgress.get()) > showPercentageInView;
-    };
-    const unsubscribe = scrollYProgress.on("change", () => {
-      const { l2r, r2l }: any = animationDone.current;
-      if (isElementInView()) {
-        if (!l2r || r2l) {
-          animationDone.current.l2r = true;
-          animationDone.current.r2l = false;
-          api.start({
-            from: {
-              x: -1200,
-            },
-            to: {
-              x: 0,
-            },
-          });
-        }
-      } else {
-        if (!r2l) {
-          animationDone.current.r2l = true;
-          animationDone.current.l2r = false;
-          api.start({
-            from: {
-              x: 0,
-            },
-            to: {
-              x: -1200,
-            },
-          });
-        }
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [scrollYProgress]);
-
+function Project({ name, description, html_url, idx }: any): ReactElement {
   return (
-    <>
-      <animated.div
-        style={{
-          ...springs,
-        }}
+    <motion.div
+      className="card-container"
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: false, amount: 0.8 }}
+    >
+      <motion.div
+        className="card"
+        variants={cardVariants}
+        style={{ border: "none" }}
       >
-        <Grid item xs={12} sm={6} key={idx} ref={divRef}>
+        <Grid item xs={12} sm={6} key={idx}>
+
           <Card sx={{ minWidth: 345 }} className=" my-3">
             <CardMedia
               sx={{ height: 140 }}
@@ -177,7 +140,7 @@ function Project({
             </CardActions>
           </Card>
         </Grid>
-      </animated.div>
-    </>
+      </motion.div>
+    </motion.div>
   );
 }
