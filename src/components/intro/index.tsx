@@ -4,7 +4,7 @@ import "./style.scss";
 /* @ts-ignore */
 import GLightbox from "glightbox";
 import "../../../node_modules/glightbox/dist/css/glightbox.min.css";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Props {
   introText: string[];
@@ -14,14 +14,14 @@ interface Props {
 
 function Intro({ introText, email, video }: Props): ReactElement {
   useEffect(() => {
-    const lightbox = GLightbox({
+    GLightbox({
       href: video,
       type: "video",
       source: "youtube", //vimeo, youtube or local
       width: 900,
       autoplayVideos: true,
     });
-  }, []);
+  }, [video]);
 
   return (
     <section id="Home" className="intro-section each-section">
