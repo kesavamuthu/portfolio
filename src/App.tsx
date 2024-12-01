@@ -3,10 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Homepage from "./pages/homepage";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React from "react";
 import Users from "./pages/users";
 
@@ -14,12 +11,12 @@ const router = createBrowserRouter([
   {
     path: "/:name",
     element: <Homepage />,
-  },{
+  },
+  {
     path: "/",
-    element: <Users />
-  }
+    element: <Users />,
+  },
 ]);
-
 
 function App() {
   return (

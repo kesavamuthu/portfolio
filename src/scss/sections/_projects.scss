@@ -55,16 +55,15 @@ body {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  img{
-    
+  img {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    }
+  }
 }
 
 .flip-card-front {
-  background-color:transparent;
+  background-color: transparent;
   color: black;
 }
 
