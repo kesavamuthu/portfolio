@@ -10,16 +10,15 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Container, Grid } from '@mui/material'
 import { motion, useInView, Variants } from 'framer-motion'
+import { VideoBGEffectModal } from '../videoBgEffectModal'
 
 interface Props {
     name?: string
-    projects?: string[][]
+    projects?: any[]
     filteredProjects?: string[]
     projectInfo: [{}]
     openSourceProjectsInfo: { [type: string]: any }
 }
-
-const showPercentageInView = 0.01
 
 export default function Projects({
     name: profileName,
@@ -28,27 +27,28 @@ export default function Projects({
     projectInfo,
     openSourceProjectsInfo,
 }: Props): ReactElement {
-    const [gitRepos, setGitRepos] = useState<Repos[] | string[][]>()
-    const ref = useRef(null)
+    const [gitRepos, setGitRepos] = useState<Repos[]>()
     console.log('projectInfo:', projectInfo)
 
     useEffect(() => {
-        ;(async () => {
+        const getGithubRepo = async () => {
             try {
+                if (!profileName) return
+
                 const { data } = await axios.get(
                     `https://api.github.com/users/${profileName}/repos`
                 )
-                setGitRepos(
-                    profileName
-                        ? (data as Repos[]).filter(
-                              ({ name }) => !filteredProjects?.includes(name)
-                          )
-                        : projects
+                setGitRepos(() =>
+                    (data as Repos[]).filter(
+                        ({ name }) => !filteredProjects?.includes(name)
+                    )
                 )
             } catch (error: any) {
                 alert(error?.message)
             }
-        })()
+        }
+
+        getGithubRepo()
     }, [profileName, filteredProjects, projects])
 
     return (
@@ -60,9 +60,23 @@ export default function Projects({
                 justifyContent="space-evenly"
                 style={{ overflow: 'hidden' }}
             >
-                {projectInfo.map((info, i) => (
-                    <Project key={i} {...info} />
+                {projects.map(({ id, name, popupComponent }, idx) => (
+                    <RenderpopupComponent
+                        key={idx}
+                        {...{
+                            name,
+                            html_url: null,
+                            description: openSourceProjectsInfo[name],
+                            idx,
+                            popupComponent,
+                        }}
+                    />
                 ))}
+
+                {projectInfo.map((info: any, idx) => (
+                    <Project {...info} idx={idx} />
+                ))}
+
                 {(gitRepos as Repos[])?.map(
                     ({ id, name, owner: { html_url } }, idx) => (
                         <Project
@@ -106,18 +120,26 @@ const cardVariants: Variants = {
     },
 }
 
+type ProjectProps = {
+    name: string
+    description: string | null
+    html_url: string | null
+    idx: number
+}
+
 function Project({
     name,
     description,
     html_url,
     idx: custom,
-}: any): ReactElement {
+}: ProjectProps): ReactElement {
     const cardRef = useRef(null)
     const inView = useInView(cardRef, {
         amount: 0.1,
         once: true,
     })
     if (!name && !description) return null
+
     return (
         <motion.div
             className="card-container"
@@ -174,11 +196,79 @@ function Project({
     )
 }
 
-const cardStyle = {
-    background: '#fff',
-    borderRadius: '8px',
-    padding: '20px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-    textAlign: 'center',
-    transformOrigin: 'center center',
+type ProjectWithPopup = {
+    popupComponent: string
+} & ProjectProps
+
+function RenderpopupComponent({
+    name,
+    description,
+    html_url,
+    idx: custom,
+    popupComponent,
+}: ProjectWithPopup): ReactElement {
+    const cardRef = useRef(null)
+
+    const inView = useInView(cardRef, {
+        amount: 0.1,
+        once: true,
+    })
+
+    const [showPopup, setShowPopup] = useState(false)
+
+    if (!name && !description) return null
+    return (
+        <>
+            <motion.div
+                className="card-container"
+                ref={cardRef}
+                custom={custom}
+                variants={cardVariants}
+                initial="offscreen"
+                animate={inView ? 'onscreen' : 'offscreen'}
+            >
+                <motion.div
+                    className="card"
+                    variants={cardVariants}
+                    style={{ border: 'none' }}
+                >
+                    <Grid item xs={12} sm={6} key={custom}>
+                        <Card sx={{ minWidth: 345 }} className=" my-3">
+                            <CardMedia
+                                sx={{ height: 140 }}
+                                image="https://www.uib.no/sites/w3.uib.no/files/styles/content_main/public/media/colourbox3117235_no5859_edit.jpg?itok=kPbJVL51"
+                                title="green iguana"
+                            />
+                            <CardContent>
+                                <Typography
+                                    gutterBottom
+                                    variant="h5"
+                                    component="div"
+                                >
+                                    {name}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                >
+                                    {description || ''}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button
+                                    size="small"
+                                    onClick={() => setShowPopup(true)}
+                                >
+                                    Open
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                </motion.div>
+            </motion.div>
+            {popupComponent === 'VideoBGEffectModal' && (
+                <VideoBGEffectModal {...{ showPopup, setShowPopup }} />
+            )}
+        </>
+    )
 }

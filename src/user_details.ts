@@ -9,7 +9,13 @@ const user: any = [
         ],
         video: 'https://www.youtube.com/watch?v=f02mOEt11OQ',
         navigation: ['Home', 'Project', 'FAQ', 'Contact'],
-        projects: [],
+        projects: [
+            {
+                name: 'Video Background Effect Modal',
+                description: '',
+                popupComponent: 'VideoBGEffectModal',
+            },
+        ],
         email: 'gokulkumar2908@gmail.com',
         filteredProjects: ['ansys-fluent'],
         projectInfo: [{}],
@@ -28,7 +34,7 @@ const user: any = [
         ],
         video: 'https://www.youtube.com/embed/_luhn7TLfWU',
         navigation: ['Home', 'Project', 'Contact'],
-        projects: [['title', 'content']],
+        projects: [],
         email: 'kesavamuthu77@gmail.com',
         projectInfo: [
             {

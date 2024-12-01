@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement, useEffect, useRef } from 'react'
 import Button from '../customButton'
 import './style.scss'
 /* @ts-ignore */
@@ -13,14 +13,20 @@ interface Props {
 }
 
 function Intro({ introText, email, video }: Props): ReactElement {
+    const playVideoBtn = useRef(null)
     useEffect(() => {
-        GLightbox({
-            href: video,
-            type: 'video',
-            source: 'youtube', //vimeo, youtube or local
-            width: 900,
+        const mygallery: any = GLightbox({
+            elements: [
+                {
+                    href: video,
+                    type: 'video',
+                    source: 'youtube', //vimeo, youtube or local
+                    width: 900,
+                },
+            ],
             autoplayVideos: true,
-        })
+        } as any)
+        playVideoBtn.current.onclick = () => mygallery.open()
     }, [video])
 
     return (
@@ -68,6 +74,7 @@ function Intro({ introText, email, video }: Props): ReactElement {
                                 href="#navbarSupportedContent"
                                 className="glightbox position-absolute top-50 start-50 translate-middle"
                                 id="hover-animation"
+                                ref={playVideoBtn}
                             >
                                 <span>
                                     <i className="fas fa-play-circle"></i>

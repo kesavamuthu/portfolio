@@ -13,14 +13,14 @@ const style = {
     p: 4,
 }
 
-export function VideoBGEffectModal({ open, setOpen }): ReactElement {
+export function VideoBGEffectModal({ showPopup, setShowPopup }): ReactElement {
     // const [open, setOpen] = useState(false);
     // const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false)
+    const handleClose = () => setShowPopup(false)
     return (
         <Modal
             keepMounted
-            open={open}
+            open={showPopup}
             onClose={handleClose}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"
