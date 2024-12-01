@@ -1,11 +1,11 @@
-import './App.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Homepage from './pages/homepage';
+import './App.scss'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min'
+import Homepage from './pages/homepage'
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import React from 'react';
-import Users from './pages/users';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import React from 'react'
+import Users from './pages/users'
 
 const router = createBrowserRouter([
     {
@@ -16,14 +16,14 @@ const router = createBrowserRouter([
         path: '/',
         element: <Users />,
     },
-]);
+])
 
 function App() {
     return (
         <React.StrictMode>
             <RouterProvider router={router} />
         </React.StrictMode>
-    );
+    )
 }
 
-export default App;
+export default App

@@ -1,22 +1,22 @@
-@import "/src//scss/sections/projects";
+@import '/src//scss/sections/projects';
 
 #intro-title > h1 {
-  border-color: black;
-  border-bottom-style: solid;
-  border-bottom-width: medium;
+    border-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
 }
 
 .project {
-  margin: 2vw;
-  border-radius: 80px;
+    margin: 2vw;
+    border-radius: 80px;
 }
 
 .project:nth-child(odd) {
-  background-color: bisque;
-  box-shadow: 5px 10px 8px rgb(0, 0, 0);
+    background-color: bisque;
+    box-shadow: 5px 10px 8px rgb(0, 0, 0);
 }
 
 .project:nth-child(even) {
-  background-color: aquamarine;
-  box-shadow: 5px 10px 8px rgb(0, 0, 0);
+    background-color: aquamarine;
+    box-shadow: 5px 10px 8px rgb(0, 0, 0);
 }

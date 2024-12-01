@@ -1,2 +1,10 @@
 .gitpod.yml
 package-lock.json
+.gitignore
+
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+.husky/*

@@ -1,59 +1,59 @@
-@use "../custom" as *;
-@use "../components/mixins" as *;
+@use '../custom' as *;
+@use '../components/mixins' as *;
 
 .intro-section {
-  @include gradient;
-  color: $white;
-  padding: 5rem 0 0 0;
-  width: 100%;
-  height: 100%;
+    @include gradient;
+    color: $white;
+    padding: 5rem 0 0 0;
+    width: 100%;
+    height: 100%;
 }
 
 .intro {
-  .video-box {
-    position: relative;
-    height: 100%;
-    a {
-      span {
-        i {
-          font-size: 5rem;
-          color: $primary;
+    .video-box {
+        position: relative;
+        height: 100%;
+        a {
+            span {
+                i {
+                    font-size: 5rem;
+                    color: $primary;
+                }
+            }
         }
-      }
     }
-  }
 }
 
 .text-end {
-  min-height: 50vh;
+    min-height: 50vh;
 }
 
 .img-fluid {
-  position: absolute;
-  height: auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #intro-title {
-  font-size: 4rem;
+    font-size: 4rem;
 }
 
 .border-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 0.55rem solid rgb(63, 183, 192);
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  animation: pulse-border 1.5s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0.55rem solid rgb(63, 183, 192);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    animation: pulse-border 1.5s linear infinite;
 
-  &--border-1 {
-    animation-delay: 1s;
-  }
-  &--border-2 {
-    animation-delay: 1.5s;
-  }
+    &--border-1 {
+        animation-delay: 1s;
+    }
+    &--border-2 {
+        animation-delay: 1.5s;
+    }
 }
